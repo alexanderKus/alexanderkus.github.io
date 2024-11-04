@@ -10,6 +10,55 @@ I read a couple of hundred of pages of [dragon book](https://en.wikipedia.org/wi
 
 I'd chosen a python as a desire language to write a interpreter in, probably because of [Tscoding](https://www.youtube.com/watch?v=8QP2fDBIxjM). Right now code is available on my github [repo](https://github.com/alexanderKus/Lang-custom-language).
 
+Quick look at grammar
+```
+program      -> declaration* OEF ;
+declaration  -> classDecl
+                | funDecl
+                | varDecl
+                | statement ;
+classDecl    -> "class" IDENTIFIER ( "<" IDENTIFIER )? "{" function* "}"
+funDecl      -> "fun" function ;
+function     -> IDENTIFIER functionBody;
+functionBody -> "(" parameters? ")" block ;
+parameters   -> IDENTIFIER ( "," IDENTIFIER )* ;
+varDecl      -> "var" IDENTIFIER ( "=" expression )? ";" ;
+statement    -> exprStmt
+                | forStmt
+                | ifStmt
+                | printStmt
+                | returnStmt
+                | whileStmt
+                | break
+                | block ;
+forStmt      -> "for" "(" ( varDecl | exprStmt| ";" )
+                  expression? ";"
+                  expression? ")" statement ;
+exprStmt     -> expression ";" ;
+ifStmt       -> "if" "(" expression ")" statement ( "else" statement )? ;
+printStmt    -> "print" expression ";" ;
+returnStmt   -> "return" expression? ";" ;
+whileStmt    -> "while" "(" expression ")" statement ;
+block        -> "{" declaration* "}" ;
+expression   -> assignment ;
+assignment   -> ( call "." )? IDENTIFIER "=" assignment
+                | logic_or ;
+logic_or     -> logic_and ( "or" logic_and )* ;
+logic and    -> equality ( "and" equality )* ;
+equality     -> comparison ( ( "!=" | "==" ) comparison )* ;
+comparison   -> term ( ( ">" | ">=" | ">" | ">=" ) term )* ;
+term         -> factor ( ( "-" | "+" ) factor )* ;
+factor       -> unary ( ( "/" | "*" ) unary )* ;
+unary        -> ( "!" | "-" ) unary
+                | call ;
+call         -> primary ( "(" arguments? ")" | "." IDENTIFIER)* ;
+primary      -> NUMBER | STRING | IDENTIFIER | "true" | "false" | "nil" | "this
+                | "(" expression ")" ;
+                | "super" "." IDENTIFIER
+                | functionBody;
+arguments    -> expression ( "," expression )* ;
+```
+
 Here is a quick sample of what language is capable of.
 
 ```
