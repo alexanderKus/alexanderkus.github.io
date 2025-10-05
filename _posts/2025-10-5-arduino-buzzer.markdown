@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Arduino Uno with buzzer"
+title:  "Arduino Uno + Buzzer"
 ---
 
 
