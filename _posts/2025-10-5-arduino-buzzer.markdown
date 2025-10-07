@@ -10,9 +10,3 @@ title:  "Arduino Uno + Buzzer"
 </video>
 
 <br>
-
-Recorded with the iPhone, so had to converter file using ffmpeg.
-
-```
-ffmpeg -i buzzer.mov -vcodec h264 -acodec aac buzzer.mp4
-```
